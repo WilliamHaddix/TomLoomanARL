@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"E:\\Repos\\TomLoomanARL\\TomLoomanARL\\Source\\TomLoomanARL\\TomLoomanARL.Build.cs",
-		"E:\\Repos\\TomLoomanARL\\TomLoomanARL\\Source\\TomLoomanARL.Target.cs",
-		"E:\\Repos\\TomLoomanARL\\TomLoomanARL\\Source\\TomLoomanARLEditor.Target.cs"
-	],
-	"EngineVersion": "5.6.0"
-}
