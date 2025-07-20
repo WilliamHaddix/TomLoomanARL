@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TomLoomanARL",
+			"Path": "..\\Source\\TomLoomanARL.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TomLoomanARLEditor",
+			"Path": "..\\Source\\TomLoomanARLEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
