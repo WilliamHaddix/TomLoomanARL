@@ -4,6 +4,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogBaseCharacter);
 
@@ -12,10 +13,15 @@ ABaseCharacter::ABaseCharacter() {
   
     SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
     SpringArm->SetupAttachment(RootComponent);
-    SpringArm->TargetArmLength = 400.f;
+    SpringArm->bUsePawnControlRotation = true;
+    SpringArm->TargetArmLength = 1500.f;
   
     CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
     CameraComp->SetupAttachment(SpringArm);
+
+    GetCharacterMovement()->bOrientRotationToMovement = true;
+
+    bUseControllerRotationYaw = false;
 }
 
 //////////////////////////////////////////////////////////////////////////// Input Setup
