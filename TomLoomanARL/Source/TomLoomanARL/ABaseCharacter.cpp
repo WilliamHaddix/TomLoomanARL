@@ -48,6 +48,7 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
         // Moving
         EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABaseCharacter::Move);
         EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ABaseCharacter::Look);
+        EnhancedInputComponent->BindAction(PrimaryAttackAction, ETriggerEvent::Triggered, this, &ABaseCharacter::PrimaryAttack);
     }
     else
     {
@@ -90,5 +91,21 @@ void ABaseCharacter::Look(const FInputActionValue& Value)
         // add yaw and pitch input to controller
         AddControllerYawInput(LookAxisVector.X);
         AddControllerPitchInput(LookAxisVector.Y);
+    }
+}
+
+void ABaseCharacter::PrimaryAttack()
+{
+    if (ProjectileClass != nullptr) {
+        FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+        FTransform SpawnTM = FTransform(GetControlRotation(),HandLocation);
+    
+        FActorSpawnParameters SpawnParams;
+        SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    
+        GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
+    }
+    else {
+        UE_LOG(LogBaseCharacter, Error, TEXT("ProjectileClass not assigned in BaseCharacter"));
     }
 }

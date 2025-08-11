@@ -34,6 +34,10 @@ class ABaseCharacter : public ACharacter
     /** Look Input Action */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
     TObjectPtr<UInputAction> LookAction;
+
+    /** Primary Attack Input Action */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    TObjectPtr<UInputAction> PrimaryAttackAction;
   
 public:
     ABaseCharacter();
@@ -41,6 +45,10 @@ public:
 protected:
     void Move(const FInputActionValue& Value);
     void Look(const FInputActionValue&Value);
+    void PrimaryAttack();
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Attack)
+    TSubclassOf<AActor> ProjectileClass;
     
     virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
     virtual void NotifyControllerChanged() override;
